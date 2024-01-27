@@ -11,6 +11,10 @@ import { useCallback } from "react";
 import { uuid, next as A } from "@automerge/automerge";
 import todoIcon from "@/svg/icons8-microsoft-todo-2019.svg";
 import Image from "next/image";
+import { computeDiff } from "@/util";
+import { updateText } from "@automerge/automerge/next";
+import { TextBox } from "./TextBox";
+import { LinkBox } from "./LinkText";
 
 const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
   const [doc, updateDoc] = useDocument<ZaikoDoc>(docUrl);
@@ -21,11 +25,69 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
         id: uuid(),
         name: "ポテチ",
         count: new A.Counter(0),
-        link: "https://amazon.co.jp",
+        url: "https://amazon.co.jp",
       };
       doc.zaikoList.push(item);
     });
   }, [updateDoc]);
+
+  const setItemName = useCallback(
+    (id: string, newName: string) => {
+      updateDoc((doc) => {
+        const itemIdx = doc.zaikoList.findIndex((item) => item.id === id);
+        if (itemIdx < 0) {
+          return;
+        }
+        updateText(doc, ["zaikoList", itemIdx, "name"], newName);
+      });
+    },
+    [updateDoc]
+  );
+
+  const setItemUrl = useCallback(
+    (id: string, newUrl: string) => {
+      updateDoc((doc) => {
+        const item = doc.zaikoList.find((item) => item.id === id);
+        if (item == null) {
+          return;
+        }
+        item.url = newUrl;
+      });
+    },
+    [updateDoc]
+  );
+
+  const handleCntButtonClick = useCallback(
+    (id: string, op: "incr" | "decr") => {
+      updateDoc((doc) => {
+        const item = doc.zaikoList.find((item) => item.id === id);
+        if (item == null) {
+          return;
+        }
+        if (op === "incr") {
+          item.count.increment(1);
+        } else {
+          if (item.count.value > 0) {
+            item.count.decrement(1);
+          }
+        }
+      });
+    },
+    [updateDoc]
+  );
+
+  const removeItem = useCallback(
+    (id: string) => {
+      updateDoc((doc) => {
+        const itemIdx = doc.zaikoList.findIndex((item) => item.id === id);
+        if (itemIdx < 0) {
+          return;
+        }
+        doc.zaikoList.splice(itemIdx, 1);
+      });
+    },
+    [updateDoc]
+  );
 
   return (
     <div className="p-5">
@@ -48,27 +110,35 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
                 <tr key={item.id}>
                   <th>{idx}</th>
                   <td>
-                    <span className="pr-1">{item.name}</span>
-                    <button className="btn btn-xs">編集</button>
+                    <TextBox
+                      text={item.name}
+                      onChange={(newName) => setItemName(item.id, newName)}
+                    />
                   </td>
                   <td>
                     <div className="flex items-center">
                       <span className="mr-1">{item.count.value}</span>
                       <div className="flex">
-                        <button className="btn btn-circle btn-outline btn-xs mr-1">
+                        <button
+                          className="btn btn-circle btn-outline btn-xs mr-1"
+                          onClick={() => handleCntButtonClick(item.id, "incr")}
+                        >
                           +
                         </button>
-                        <button className="btn btn-circle btn-outline btn-xs mr-1">
+                        <button
+                          className="btn btn-circle btn-outline btn-xs mr-1"
+                          onClick={() => handleCntButtonClick(item.id, "decr")}
+                        >
                           -
                         </button>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <a href={item.link} className="link pr-1">
-                      リンク
-                    </a>
-                    <button className="btn btn-xs">編集</button>
+                    <LinkBox
+                      text={item.url}
+                      onChange={(newUrl) => setItemUrl(item.id, newUrl)}
+                    />
                   </td>
                   <td>
                     <button className="btn btn-xs btn">
@@ -80,7 +150,12 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
                     </button>
                   </td>
                   <td>
-                    <button className="btn btn-xs btn-error">x</button>
+                    <button
+                      className="btn btn-xs btn-error"
+                      onClick={() => removeItem(item.id)}
+                    >
+                      x
+                    </button>
                   </td>
                 </tr>
               );

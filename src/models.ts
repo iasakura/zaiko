@@ -4,7 +4,7 @@ export type ZaikoItem = {
   id: string;
   name: string;
   count: A.Counter;
-  link: string;
+  url: string;
 };
 
 export type ZaikoDoc = {
