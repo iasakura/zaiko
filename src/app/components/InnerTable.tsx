@@ -5,16 +5,14 @@ import {
   RepoContext,
   useDocument,
 } from "@automerge/automerge-repo-react-hooks";
-import { automergeRepo, zaikoHandle } from "@/repositories/automerge";
+import { automergeRepo, docUrl } from "@/repositories/automerge";
 import { ZaikoDoc, ZaikoItem } from "@/models";
 import { useCallback } from "react";
 import { uuid, next as A } from "@automerge/automerge";
 import todoIcon from "@/svg/icons8-microsoft-todo-2019.svg";
 import Image from "next/image";
-import { computeDiff } from "@/util";
 import { updateText } from "@automerge/automerge/next";
-import { TextBox } from "./TextBox";
-import { LinkBox } from "./LinkText";
+import { TextBox, LinkBox } from "./TextBox";
 
 const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
   const [doc, updateDoc] = useDocument<ZaikoDoc>(docUrl);
@@ -175,7 +173,7 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
 const Main = () => {
   return (
     <RepoContext.Provider value={automergeRepo}>
-      <Table docUrl={zaikoHandle.url} />
+      <Table docUrl={docUrl} />
     </RepoContext.Provider>
   );
 };
