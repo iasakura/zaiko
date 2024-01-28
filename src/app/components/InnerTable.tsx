@@ -13,9 +13,17 @@ import todoIcon from "@/svg/icons8-microsoft-todo-2019.svg";
 import Image from "next/image";
 import { updateText } from "@automerge/automerge/next";
 import { TextBox, LinkBox } from "./TextBox";
+import { getMsGraphClient } from "@/useMsGraphClient";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
   const [doc, updateDoc] = useDocument<ZaikoDoc>(docUrl);
+  const { status, update, ...token } = useSession();
+  if (status !== "authenticated" || token.data?.access_token == null) {
+    redirect("/api/auth/signin");
+  }
+  const client = getMsGraphClient(token.data.access_token);
 
   const addNewItem = useCallback(() => {
     updateDoc((doc) => {
@@ -139,7 +147,28 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
                     />
                   </td>
                   <td>
-                    <button className="btn btn-xs btn">
+                    <button
+                      className="btn btn-xs btn"
+                      onClick={async () => {
+                        console.log(
+                          await client
+                            .api(
+                              // FIXME
+                              `/me/todo/lists/${process.env.NEXT_PUBLIC_TASK_LIST_ID ?? ""}/tasks`
+                            )
+                            .post({
+                              title: item.name,
+                              linkedResources: [
+                                {
+                                  webUrl: item.url,
+                                  applicationName: "Amazon",
+                                  displayName: "リンク",
+                                },
+                              ],
+                            })
+                        );
+                      }}
+                    >
                       <Image
                         src={todoIcon}
                         style={{ height: 12, width: 12 }}

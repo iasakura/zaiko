@@ -1,11 +1,20 @@
-import dynamic from "next/dynamic";
 import React from "react";
 import { Table } from "./components/Table";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import { SessionProvider } from "next-auth/react";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+  if (session == null) {
+    redirect("/api/auth/signin");
+  }
+
   return (
     <div>
-      <Table />
+      <SessionProvider session={session}>
+        <Table />
+      </SessionProvider>
     </div>
   );
 }
