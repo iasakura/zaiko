@@ -11,35 +11,35 @@ patchedDependencies:
 
 dependencies:
   '@auth/core':
-    specifier: ^0.24.0
-    version: 0.24.0
+    specifier: ^0.21.0
+    version: 0.21.0
   '@automerge/automerge':
     specifier: ^2.1.10
     version: 2.1.10
   '@automerge/automerge-repo':
-    specifier: ^1.0.19
-    version: 1.0.19(@types/node@20.11.5)(typescript@5.3.3)
+    specifier: ^1.1.1
+    version: 1.1.1(@types/node@20.11.5)(typescript@5.3.3)
   '@automerge/automerge-repo-network-broadcastchannel':
-    specifier: ^1.0.19
-    version: 1.0.19(@types/node@20.11.5)(typescript@5.3.3)
+    specifier: ^1.1.1
+    version: 1.1.1(@types/node@20.11.5)(typescript@5.3.3)
   '@automerge/automerge-repo-network-websocket':
-    specifier: ^1.1.0
-    version: 1.1.0(@types/node@20.11.5)(typescript@5.3.3)
+    specifier: ^1.1.1
+    version: 1.1.1(@types/node@20.11.5)(typescript@5.3.3)
   '@automerge/automerge-repo-react-hooks':
-    specifier: ^1.0.19
-    version: 1.0.19(@types/node@20.11.5)(typescript@5.3.3)
+    specifier: ^1.1.1
+    version: 1.1.1(@types/node@20.11.5)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
   '@automerge/automerge-repo-storage-indexeddb':
-    specifier: ^1.0.19
-    version: 1.0.19(@types/node@20.11.5)(typescript@5.3.3)
+    specifier: ^1.1.1
+    version: 1.1.1(@types/node@20.11.5)(typescript@5.3.3)
   '@microsoft/microsoft-graph-client':
     specifier: ^3.0.7
     version: 3.0.7
   next:
     specifier: canary
-    version: 14.1.1-canary.17(react-dom@18.2.0)(react@18.2.0)
+    version: 14.1.1-canary.47(react-dom@18.2.0)(react@18.2.0)
   next-auth:
     specifier: beta
-    version: 5.0.0-beta.5(next@14.1.1-canary.17)(react@18.2.0)
+    version: 5.0.0-beta.9(next@14.1.1-canary.47)(react@18.2.0)
   react:
     specifier: ^18
     version: 18.2.0
@@ -111,11 +111,17 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/core@0.24.0:
-    resolution: {integrity: sha512-wwTyapljg4ydyvtQRXSeOaj6nBVSvPkVoXws6i+/vPfINxz4lo9UuLifPLqW7iO72/f4Ttaez0g3XA42VtKQ8A==}
+  /@auth/core@0.26.3:
+    resolution: {integrity: sha512-Ka6rMjWMdiQCvLW/CnYZxj4Rq2bhQ/ZtU32NLxmtyAaixGb0mRXQ9MxJUBZA7GHovbghdzu55p2Cb54qNlVFzw==}
     peerDependencies:
+      '@simplewebauthn/browser': ^9.0.1
+      '@simplewebauthn/server': ^9.0.1
       nodemailer: ^6.8.0
     peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
+      '@simplewebauthn/server':
+        optional: true
       nodemailer:
         optional: true
     dependencies:
@@ -128,10 +134,10 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@automerge/automerge-repo-network-broadcastchannel@1.0.19(@types/node@20.11.5)(typescript@5.3.3):
-    resolution: {integrity: sha512-Qb5+i+huCnOuriyVwuusHUXzUWdgOqslhSa/wAQEvJ+nOPkwhDDhDTgdvjnQjK5/grJCQzcmlwh+oQ55/3IPcg==}
+  /@automerge/automerge-repo-network-broadcastchannel@1.1.1(@types/node@20.11.5)(typescript@5.3.3):
+    resolution: {integrity: sha512-g0SDRwpb4u2ZzRpQXSHnozuAL0/uyuRovvGtRrbryh6SxO/QPPzgoGTcX5sHcloZ0nlQ50wE2hL2FL1UNcIV4Q==}
     dependencies:
-      '@automerge/automerge-repo': 1.0.19(@types/node@20.11.5)(typescript@5.3.3)
+      '@automerge/automerge-repo': 1.1.1(@types/node@20.11.5)(typescript@5.3.3)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -140,10 +146,10 @@ packages:
       - typescript
     dev: false
 
-  /@automerge/automerge-repo-network-websocket@1.1.0(@types/node@20.11.5)(typescript@5.3.3):
-    resolution: {integrity: sha512-D3k/RKI5xVPb+ZEmEmL/MiuGiu2vzujOloyHveLmd1R9BL2JakbKk1s4G2MhTBT1qF8Io02pIa1+lsaG9HlULA==}
+  /@automerge/automerge-repo-network-websocket@1.1.1(@types/node@20.11.5)(typescript@5.3.3):
+    resolution: {integrity: sha512-1KHMeeAagsptbwML6WUhcAyhFffy3RYBRUhZPZwB01Cj90S4DdAtHyAW7wgG8CTWIUNd9BaKex6ZmeMKhcgARw==}
     dependencies:
-      '@automerge/automerge-repo': 1.1.0(@types/node@20.11.5)(typescript@5.3.3)
+      '@automerge/automerge-repo': 1.1.1(@types/node@20.11.5)(typescript@5.3.3)
       cbor-x: 1.5.8
       debug: 4.3.4
       eventemitter3: 5.0.1
@@ -159,11 +165,14 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@automerge/automerge-repo-react-hooks@1.0.19(@types/node@20.11.5)(typescript@5.3.3):
-    resolution: {integrity: sha512-bEy7YvIHOwrBPl+4HPmhLedUJ7e1LF+pXLjqexykcNU+1oCEk/JEc98rx9GxQKt4TFCEhouGErDMFwJD8NpVTw==}
+  /@automerge/automerge-repo-react-hooks@1.1.1(@types/node@20.11.5)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-IV8aLjy+0vV2USuYAf2gFaNpFL1e8MLcgLZjBEQiiatn8qWGtkQXaNYbzxikbNPFzdymmNCyt/5XMBiLiq7GYA==}
+    peerDependencies:
+      react: '>16.8.0'
+      react-dom: '>16.8.0'
     dependencies:
       '@automerge/automerge': 2.1.10
-      '@automerge/automerge-repo': 1.0.19(@types/node@20.11.5)(typescript@5.3.3)
+      '@automerge/automerge-repo': 1.1.1(@types/node@20.11.5)(typescript@5.3.3)
       eventemitter3: 5.0.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -176,10 +185,10 @@ packages:
       - typescript
     dev: false
 
-  /@automerge/automerge-repo-storage-indexeddb@1.0.19(@types/node@20.11.5)(typescript@5.3.3):
-    resolution: {integrity: sha512-mp2P37tVtd2CIYMOfuYQd6iiXYSSw0ooJnuugDhR53KC1Q1gIFUiNBF/m3XE/Gp+ZOZm03HHPIfHjqxqk9mSag==}
+  /@automerge/automerge-repo-storage-indexeddb@1.1.1(@types/node@20.11.5)(typescript@5.3.3):
+    resolution: {integrity: sha512-NCI8JNmOgJ/E1rwxHdo+yRXTA95CCf/gmQvrvK2ymI9onApJ6m835/tYtWFHm5TYA0f7c2K2J6GosL8+u6I9WA==}
     dependencies:
-      '@automerge/automerge-repo': 1.0.19(@types/node@20.11.5)(typescript@5.3.3)
+      '@automerge/automerge-repo': 1.1.1(@types/node@20.11.5)(typescript@5.3.3)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -188,29 +197,8 @@ packages:
       - typescript
     dev: false
 
-  /@automerge/automerge-repo@1.0.19(@types/node@20.11.5)(typescript@5.3.3):
-    resolution: {integrity: sha512-IcfX9xkbk+YY7IhG+ZCoUVccou2MmHGXvu/XGOICFmUIaG1mkQAPzZU2u5r2JUX0cpr/2PcIPOeCletJMssnWw==}
-    dependencies:
-      '@automerge/automerge': 2.1.10
-      bs58check: 3.0.1
-      cbor-x: 1.5.8
-      debug: 4.3.4
-      eventemitter3: 5.0.1
-      fast-sha256: 1.3.0
-      tiny-typed-emitter: 2.1.0
-      ts-node: 10.9.2(@types/node@20.11.5)(typescript@5.3.3)
-      uuid: 9.0.1
-      xstate: 4.38.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - supports-color
-      - typescript
-    dev: false
-
-  /@automerge/automerge-repo@1.1.0(@types/node@20.11.5)(typescript@5.3.3):
-    resolution: {integrity: sha512-QRSt2s89Uhrlofbkipsb/9Alyp65/e1PocNzY+L4J7yDDXD7fbEW5uThXey2lSb1m98Fe0+NtzyKD1we6lvAkA==}
+  /@automerge/automerge-repo@1.1.1(@types/node@20.11.5)(typescript@5.3.3):
+    resolution: {integrity: sha512-fQq+4eUadubzHOUi2BIiC5f/XFUHixJ/kdfnbXRoh2xwzojMfQIlrRfZzxkuW5AdD9LOC2/LoWJs+ak4a9vq4Q==}
     dependencies:
       '@automerge/automerge': 2.1.10
       bs58check: 3.0.1
@@ -428,8 +416,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@next/env@14.1.1-canary.17:
-    resolution: {integrity: sha512-djnSCCQryoNi2L048SclC3azJOrSR5AeuN7cR4qlZYIFg5zOPe+TRXJbvQgCiKf9RGxlduBnTTRcEfrC0jvKGw==}
+  /@next/env@14.1.1-canary.47:
+    resolution: {integrity: sha512-3yMPXx6Zdq73RvRQULdRBr5dH8XOv+jTG/dIl6KS2vfKwrV3v9xH4iwjlfFhh5Cjn9R7W8rxXduNuk1kf2tYig==}
     dev: false
 
   /@next/eslint-plugin-next@14.1.0:
@@ -438,8 +426,8 @@ packages:
       glob: 10.3.10
     dev: true
 
-  /@next/swc-darwin-arm64@14.1.1-canary.17:
-    resolution: {integrity: sha512-VSyfaRwwqr7aery2jTm7AlcjbDXTnwV7w5ugjmr7Nq7nNxG2COkk7VmZI19qeWVWK0JxHbBjdTQX/Xxb019ZsA==}
+  /@next/swc-darwin-arm64@14.1.1-canary.47:
+    resolution: {integrity: sha512-2EAx+YUrSX2ES8FQcRmGaIyh06HQb/MgDCwMvG3OetJap+TrDujp0CVmLwfKMxGTKktmqFJD75wVAyodaGnb4A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -447,8 +435,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-darwin-x64@14.1.1-canary.17:
-    resolution: {integrity: sha512-Et5VG0JllbDzzMxhxYjyOSNhhcVk+8YJOr+BRcEQFP0Kavys/AlywWlVlKkpsXrJ57YZ4P05e1Qlc504oEecHA==}
+  /@next/swc-darwin-x64@14.1.1-canary.47:
+    resolution: {integrity: sha512-Tyb6mNS03yvT4zFnjddgxoLMD6Hw5O2QTcurSsPkpgxXWQWG71KHanqHkJW90/QEtmuB/IM7A82MBO5Ja7ITwQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -456,8 +444,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-gnu@14.1.1-canary.17:
-    resolution: {integrity: sha512-2z+Bq7k2NabF+frqXbECJ5RhPU05M+Jx+NtfeoOL0hxmmsU+uxU3kqecR8EqZHOlCFfjSIwXd6PGO+lRlzHVIg==}
+  /@next/swc-linux-arm64-gnu@14.1.1-canary.47:
+    resolution: {integrity: sha512-cevHVvbAKx1g0qMeoqhgTFJ2Z+ye1n1y+sS7/ls7+RHQQLWVYm5/G0IUPGYH63+qX+3gSNrZgiIl8j6ULq8nvA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -465,8 +453,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-musl@14.1.1-canary.17:
-    resolution: {integrity: sha512-h1L7IH9cXqRPGjZ5nkIeZhAcU6Y1n+ZIRSjbup6kBBFBIs/Z0uAFNjWfX6lcxd5kPNCPLrIabhAKjJHwo/aEaw==}
+  /@next/swc-linux-arm64-musl@14.1.1-canary.47:
+    resolution: {integrity: sha512-gkxadSI7SDc9VAqNelAy6wFYZFK3UXUcn3VeihCTdVaIacEVgozUtNmYBbGyBNgf6HKlVVuswlEdpALIleUgrw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -474,8 +462,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-gnu@14.1.1-canary.17:
-    resolution: {integrity: sha512-7Q39fu8g5EcRWxRK7Zc3FEWsAlVxqct/eNykuO7J/15XMGvDfEKkI8DUs77cqVaLa/qALsTihXCU7Mbl+wxLKg==}
+  /@next/swc-linux-x64-gnu@14.1.1-canary.47:
+    resolution: {integrity: sha512-yppPAqGsip8jDDiY2QHRlsgSaQ9ezkf56d3Dna2eWodhfoyAyROgTQoimxqWa41/jJrNPh/UQPwIBgrfnJusqQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -483,8 +471,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-musl@14.1.1-canary.17:
-    resolution: {integrity: sha512-9cnToNkGh8da8Z3KgiqB+aFuRX0eMzK7wIWBnAFCIQD3U6USf3T5BUTFqD4JS5X1+IUiFb5dWlFX0tPZVdIkTw==}
+  /@next/swc-linux-x64-musl@14.1.1-canary.47:
+    resolution: {integrity: sha512-kKcSpf5bHGsSfJsfOWzXUkdT5kYxG6xlu2zKh1qNxzjMkb2b9pSXgXKregcBsGyBHxP4PC6+gGmVtwopDEbMuw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -492,8 +480,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-arm64-msvc@14.1.1-canary.17:
-    resolution: {integrity: sha512-a/dL3tkGNhsi9Ipi5oR9BJ5IsmeAbgLuOJf0P7CTyGhesNz+6jyqNLc/r3backYzUETo8G2qb1M3VVly9767Lg==}
+  /@next/swc-win32-arm64-msvc@14.1.1-canary.47:
+    resolution: {integrity: sha512-DxJ+x+zsiYPpW13mNPrLpSrykyWwKu9QFKubHJooWcGNBawKdIQFXDyu5nahmkUntQh0hXsiXD1v7JyMYJxtEw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -501,8 +489,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-ia32-msvc@14.1.1-canary.17:
-    resolution: {integrity: sha512-hcWdZOycU/8CwEQzuGRXgbWRlsQ+Zmxgp2foMxvUfnihIch7UlNxCJD6RKDOAG1KBwNGvoIQKREALO7ya30VOA==}
+  /@next/swc-win32-ia32-msvc@14.1.1-canary.47:
+    resolution: {integrity: sha512-qkTPne2qfWMe/gZKfc9Wyvdogck9zxZXEAQ/IgLSBXkc96nnsoJ2JDLWfCpnkJpPPYvkhO0Dt6EO9XYZJV3VmQ==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
@@ -510,8 +498,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-x64-msvc@14.1.1-canary.17:
-    resolution: {integrity: sha512-9WYiEF3TWHBVLY3F/6JMOtZVxNe2drPc96Jk6njFtBUR/ds08TBR2n7Llm2YVcEunOV8ybgIo+uX8Kv9Pqk+UQ==}
+  /@next/swc-win32-x64-msvc@14.1.1-canary.47:
+    resolution: {integrity: sha512-jkZrycmue22TAK9l1oyU4UgkqGfZeiJQJMK4jYf0ULWplO63dwaWx2tjuLsgfs2sOlMxjWP4WLqrKKha196MvQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -560,9 +548,14 @@ packages:
     resolution: {integrity: sha512-Jh4t/593gxs0lJZ/z3NnasKlplXT2f+4y/LZYuaKZW5KAaiVFL/fThhs+17EbUd53jUVJ0QudYCBGbN/psvaqg==}
     dev: true
 
-  /@swc/helpers@0.5.2:
-    resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
+  /@swc/counter@0.1.3:
+    resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
+    dev: false
+
+  /@swc/helpers@0.5.5:
+    resolution: {integrity: sha512-KGYxvIOXcceOAbEk4bi/dVLEK9z8sZ0uBB3Il5b1rhfClSpcX0yfRO0KmTkqR2cnQDymwLB+25ZyMzICg/cm/A==}
     dependencies:
+      '@swc/counter': 0.1.3
       tslib: 2.6.2
     dev: false
 
@@ -2264,23 +2257,29 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-auth@5.0.0-beta.5(next@14.1.1-canary.17)(react@18.2.0):
-    resolution: {integrity: sha512-tEYIPhm/i0byW4xf9Ldlsnh7ckBQfNvMjOA3B3eXQX9taAQWb8earravSn1fjk4fKfKvaOApFJkks0VeI7Vy/A==}
+  /next-auth@5.0.0-beta.9(next@14.1.1-canary.47)(react@18.2.0):
+    resolution: {integrity: sha512-BWFiwJ/wzfxWpHnGpAoFsXHSlVofWgFns6tjtIGeDrXfEf3D+afnBpmzCNyek2RNYDVgMHi8Q5uXzFoNBd2l5g==}
     peerDependencies:
+      '@simplewebauthn/browser': ^9.0.1
+      '@simplewebauthn/server': ^9.0.1
       next: ^14
       nodemailer: ^6.6.5
       react: ^18.2.0
     peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
+      '@simplewebauthn/server':
+        optional: true
       nodemailer:
         optional: true
     dependencies:
-      '@auth/core': 0.21.0
-      next: 14.1.1-canary.17(react-dom@18.2.0)(react@18.2.0)
+      '@auth/core': 0.26.3
+      next: 14.1.1-canary.47(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false
 
-  /next@14.1.1-canary.17(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-I+65TWGo/0jhMVAyInESaA7lbxTv+jzhm5dYpzE6o3ZE+c45dB1/lBiqKehrARcgIBN/d/RzcAMI0htkMEV/1g==}
+  /next@14.1.1-canary.47(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-hsfilAAmofcfVt/rvDL/jL2cGXhCsM7dYrGIZ6zaa6XfLuvSLCGDbkmfgLFRL+0RM80SbhwznBx4LNmOz3IKbQ==}
     engines: {node: '>=18.17.0'}
     hasBin: true
     peerDependencies:
@@ -2294,8 +2293,8 @@ packages:
       sass:
         optional: true
     dependencies:
-      '@next/env': 14.1.1-canary.17
-      '@swc/helpers': 0.5.2
+      '@next/env': 14.1.1-canary.47
+      '@swc/helpers': 0.5.5
       busboy: 1.6.0
       caniuse-lite: 1.0.30001579
       graceful-fs: 4.2.11
@@ -2304,15 +2303,15 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       styled-jsx: 5.1.1(react@18.2.0)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 14.1.1-canary.17
-      '@next/swc-darwin-x64': 14.1.1-canary.17
-      '@next/swc-linux-arm64-gnu': 14.1.1-canary.17
-      '@next/swc-linux-arm64-musl': 14.1.1-canary.17
-      '@next/swc-linux-x64-gnu': 14.1.1-canary.17
-      '@next/swc-linux-x64-musl': 14.1.1-canary.17
-      '@next/swc-win32-arm64-msvc': 14.1.1-canary.17
-      '@next/swc-win32-ia32-msvc': 14.1.1-canary.17
-      '@next/swc-win32-x64-msvc': 14.1.1-canary.17
+      '@next/swc-darwin-arm64': 14.1.1-canary.47
+      '@next/swc-darwin-x64': 14.1.1-canary.47
+      '@next/swc-linux-arm64-gnu': 14.1.1-canary.47
+      '@next/swc-linux-arm64-musl': 14.1.1-canary.47
+      '@next/swc-linux-x64-gnu': 14.1.1-canary.47
+      '@next/swc-linux-x64-musl': 14.1.1-canary.47
+      '@next/swc-win32-arm64-msvc': 14.1.1-canary.47
+      '@next/swc-win32-ia32-msvc': 14.1.1-canary.47
+      '@next/swc-win32-x64-msvc': 14.1.1-canary.47
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros

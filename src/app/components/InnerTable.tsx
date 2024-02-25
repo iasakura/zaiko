@@ -7,7 +7,6 @@ import {
 } from "@automerge/automerge-repo-react-hooks";
 import { automergeRepo, docUrl } from "@/repositories/automerge";
 import { ZaikoDoc, ZaikoItem } from "@/models";
-import { useCallback } from "react";
 import { uuid, next as A } from "@automerge/automerge";
 import todoIcon from "@/svg/icons8-microsoft-todo-2019.svg";
 import Image from "next/image";
@@ -16,16 +15,24 @@ import { TextBox, LinkBox } from "./TextBox";
 import { getMsGraphClient } from "@/useMsGraphClient";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import React from "react";
 
 const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
   const [doc, updateDoc] = useDocument<ZaikoDoc>(docUrl);
+  console.log(doc);
   const { status, update, ...token } = useSession();
   if (status !== "authenticated" || token.data?.access_token == null) {
     redirect("/api/auth/signin");
   }
-  const client = getMsGraphClient(token.data.access_token);
 
-  const addNewItem = useCallback(() => {
+  const accessToken = React.useRef<string>(token.data.access_token);
+  if (accessToken.current !== token.data.access_token) {
+    accessToken.current = token.data.access_token;
+  }
+
+  const client = React.useMemo(() => getMsGraphClient(accessToken.current), []);
+
+  const addNewItem = React.useCallback(() => {
     updateDoc((doc) => {
       const item: ZaikoItem = {
         id: uuid(),
@@ -37,7 +44,7 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
     });
   }, [updateDoc]);
 
-  const setItemName = useCallback(
+  const setItemName = React.useCallback(
     (id: string, newName: string) => {
       updateDoc((doc) => {
         const itemIdx = doc.zaikoList.findIndex((item) => item.id === id);
@@ -50,7 +57,7 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
     [updateDoc]
   );
 
-  const setItemUrl = useCallback(
+  const setItemUrl = React.useCallback(
     (id: string, newUrl: string) => {
       updateDoc((doc) => {
         const item = doc.zaikoList.find((item) => item.id === id);
@@ -63,7 +70,7 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
     [updateDoc]
   );
 
-  const handleCntButtonClick = useCallback(
+  const handleCntButtonClick = React.useCallback(
     (id: string, op: "incr" | "decr") => {
       updateDoc((doc) => {
         const item = doc.zaikoList.find((item) => item.id === id);
@@ -82,7 +89,7 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
     [updateDoc]
   );
 
-  const removeItem = useCallback(
+  const removeItem = React.useCallback(
     (id: string) => {
       updateDoc((doc) => {
         const itemIdx = doc.zaikoList.findIndex((item) => item.id === id);
@@ -154,7 +161,9 @@ const Table = ({ docUrl }: { docUrl: AutomergeUrl }) => {
                           await client
                             .api(
                               // FIXME
-                              `/me/todo/lists/${process.env.NEXT_PUBLIC_TASK_LIST_ID ?? ""}/tasks`
+                              `/me/todo/lists/${
+                                process.env.NEXT_PUBLIC_TASK_LIST_ID ?? ""
+                              }/tasks`
                             )
                             .post({
                               title: item.name,
