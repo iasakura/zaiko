@@ -1,0 +1,18 @@
+[package]
+name = "zaiko-backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+automerge = "0.5.7"
+axum = { version = "0.7.4", features = ["ws"] }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+tokio = { version = "1.36.0", features = ["full"] }
+axum-extra = { version = "0.9.2", features = ["typed-header"] }
+futures = "0.3.30"
+tower-http = { version = "0.5.1", features = ["fs", "trace"] }
+tracing = "0.1.40"
+automerge_repo = { path = "../automerge-repo-rs", features = ["tokio", "axum"] }
+anyhow = "1.0.79"
